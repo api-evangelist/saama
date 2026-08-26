@@ -1,0 +1,97 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  https://www.saama.com/about/company/security-compliance/ ,
+  https://www.saama.com/platform/products/brain-sdtm/ ,
+  https://www.saama.com/platform/products/data-hub/
+note: >-
+  Saama publishes no machine-readable contract (no OpenAPI, AsyncAPI, GraphQL SDL, WSDL or .proto
+  was found on any host - see x-coverage in apis.yml), so nothing here is derived from a spec.
+  Every entry below is read from the company's own public product and compliance pages, and each
+  one is recorded at the strength the page actually states: "aligned to" is not "certified", and a
+  product page saying it adheres to a standard is a PROSE claim, not a contract declaring the
+  standard. No domain-standard conformance is asserted at the contract level, because there is no
+  contract to declare it in.
+conformance:
+- id: iso-27001
+  conforms: true
+  strength: claimed-aligned
+  evidence: >-
+    Security & Compliance page: "Our program is aligned to: ISO/IEC 27001:2013". No certificate or
+    certification body is named.
+  url: https://www.saama.com/about/company/security-compliance/
+- id: 21-cfr-part-11
+  conforms: true
+  strength: claimed-aligned
+  evidence: 'Security & Compliance page: "Our program is aligned to: ... 21 CFR Part 11".'
+  url: https://www.saama.com/about/company/security-compliance/
+- id: ich-e6-gcp
+  conforms: true
+  strength: claimed-aligned
+  evidence: 'Security & Compliance page: "Our program is aligned to: ... ICH E6".'
+  url: https://www.saama.com/about/company/security-compliance/
+- id: fips-140-2
+  conforms: true
+  strength: claimed-aligned
+  evidence: >-
+    "AES 256-bit encryption and cryptographic algorithms, approved in the Federal Information
+    Processing Standard ("FIPS" 140-2) security standards publication."
+  url: https://www.saama.com/about/company/security-compliance/
+- id: cdisc-sdtm
+  conforms: true
+  strength: claimed-product
+  evidence: >-
+    BRAIN SDTM product page describes "optimization of SDTM artifacts in strict adherence to CDISC
+    standards". This is the domain standard for Saama's market (clinical trial data submission),
+    but the claim lives on a marketing page, not in a published contract.
+  url: https://www.saama.com/platform/products/brain-sdtm/
+- id: cdisc-define-xml
+  conforms: true
+  strength: claimed-product
+  evidence: 'BRAIN SDTM product page: "Supports Latest Define-XML Version".'
+  url: https://www.saama.com/platform/products/brain-sdtm/
+- id: saml
+  conforms: true
+  strength: claimed-aligned
+  evidence: >-
+    "Saama's Platform features SAML, OAuth, and LDAP authentication mechanisms and provide seamless
+    single sign-on". Applies to platform sign-in, not to a documented API auth flow.
+  url: https://www.saama.com/about/company/security-compliance/
+- id: oauth2
+  conforms: true
+  strength: claimed-aligned
+  evidence: >-
+    Same sentence names OAuth as a supported platform authentication mechanism. No authorization
+    server metadata is served (/.well-known/oauth-authorization-server returns the HTML shell) and
+    no scopes, flows or token endpoints are documented publicly.
+  url: https://www.saama.com/about/company/security-compliance/
+- id: rfc9457
+  conforms: false
+  evidence: No public error reference or problem+json usage could be found; no contract to inspect.
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: https://www.saama.com/.well-known/security.txt returns 404.
+- id: rfc8594-sunset-header
+  conforms: false
+  evidence: No public deprecation or versioning policy is published.
+- id: fhir
+  conforms: false
+  evidence: >-
+    Not claimed anywhere on the public site. Saama's clinical-data surface is CDISC-shaped
+    (SDTM/Define-XML), not HL7 FHIR - recorded as a not-applicable-here negative, not a failing.
+- id: hipaa
+  conforms: false
+  evidence: >-
+    HIPAA is named nowhere on the Security & Compliance page despite the clinical and MedTech
+    Revenue Cycle Management product lines. Recorded as unstated, not as non-compliance.
+domain_standard:
+  market: clinical trial data management and regulatory submission (life sciences)
+  standard: CDISC (SDTM, Define-XML)
+  declared_in_contract: false
+  note: >-
+    CDISC is unambiguously the domain standard for this market and Saama builds product directly on
+    it (BRAIN SDTM, Source to Submission). Because 0.12.0 domain_standard_conformance reads the
+    CONTRACT rather than a prose claim, and Saama publishes no contract, this is recorded as
+    claimed-but-not-declared. It is the single highest-value thing Saama could change: publishing an
+    OpenAPI whose schemas carry SDTM domain/variable names would convert a marketing claim into a
+    machine-checkable one.

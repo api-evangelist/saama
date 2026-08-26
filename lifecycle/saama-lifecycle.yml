@@ -1,0 +1,84 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  site-wide search of https://www.saama.com/ (page sitemap, 103 URLs) plus direct probes for a
+  status page, SLA, changelog, release notes and deprecation policy
+documented: false
+pointer_emitted: false
+note: >-
+  Saama publishes no API lifecycle information of any kind. Every conventional path was probed on
+  2026-08-26 and every one of them HTTP 301s to the homepage - /sla/, /changelog/, /release-notes/,
+  /status/, /service-level-agreement/ - and the Yoast page sitemap contains no versioning,
+  deprecation, SLA, uptime or release-notes page. status.saama.com does not resolve (DNS NXDOMAIN),
+  so there is no status host either. Because there is no published contract, there are also no
+  deprecated operations to derive. No `Lifecycle`, `StatusPage` or `Deprecation` pointer is wired
+  into apis.yml: each of those asserts the provider publishes that surface, and none of them exist.
+  The company's public release signal is editorial, not operational - product news is announced in
+  the newsroom and blog with no version numbers and no dated change record.
+versioning:
+  policy_published: false
+  scheme: null
+  current_version: null
+  note: No API version scheme is stated publicly; no versioned URL, header or media type is documented.
+deprecation:
+  policy_published: false
+  notice_period: null
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  note: >-
+    No deprecation policy, no notice period, and no evidence of RFC 8594 Sunset/Deprecation
+    headers. Nothing to observe - no public endpoint responds.
+sla:
+  published: false
+  uptime_target: null
+  note: >-
+    No public SLA or uptime commitment. https://www.saama.com/sla/ and /service-level-agreement/
+    both 301 to the homepage. Service levels are presumably set in the negotiated master agreement
+    that the enterprise sales motion recorded in plans/saama-plans-pricing.yml implies.
+status_page:
+  published: false
+  url: null
+  note: status.saama.com is DNS NXDOMAIN; /status/ 301s to the homepage; no Statuspage.io, Better
+    Stack or Atlassian status host was found.
+changelog:
+  published: false
+  url: null
+  note: >-
+    No dated changelog or release notes. /changelog/ and /release-notes/ 301 to the homepage. The
+    closest published signal is the newsroom (https://www.saama.com/news/) and blog
+    (https://www.saama.com/blog/), which are dated but editorial - they announce products, not
+    versions, and carry no breaking-change or additions structure.
+support_channel:
+  url: https://support.saama.com/
+  status: 302
+  redirects_to: https://support.saama.com/support/login
+  vendor: Freshworks (Freshdesk - support.saama.com CNAMEs to fdus-lb53-d41.freshdesk.com)
+  public: false
+  note: >-
+    The only operational channel Saama exposes is a Freshdesk portal that 302s to a login. Any
+    lifecycle communication - deprecations, maintenance windows, incident notices - reaches
+    customers through that gate, not through a public surface.
+deprecated_operations: []
+x-evidence:
+- url: https://www.saama.com/sla/
+  status: 301
+  note: Location https://www.saama.com/
+- url: https://www.saama.com/changelog/
+  status: 301
+  note: Location https://www.saama.com/
+- url: https://www.saama.com/release-notes/
+  status: 301
+  note: Location https://www.saama.com/
+- url: https://www.saama.com/status/
+  status: 301
+  note: Location https://www.saama.com/
+- url: https://status.saama.com/
+  status: <no response>
+  note: DNS NXDOMAIN
+- url: https://support.saama.com/
+  status: 302
+  note: Location https://support.saama.com/support/login
+- url: https://www.saama.com/page-sitemap.xml
+  status: 200
+  note: 103 URLs, none about versioning, deprecation, SLA, status or releases

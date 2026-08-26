@@ -1,0 +1,113 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  npm registry search + registry.npmjs.org metadata, PyPI, api.github.com org and repo search,
+  and a site-wide search of https://www.saama.com/ for SDK or client-library downloads
+official_sdk_count: 0
+note: >-
+  Saama publishes no first-party SDK or client library on any registry. npm, PyPI and the GitHub
+  org search were all searched on 2026-08-26. There is no `saama` GitHub organization
+  (api.github.com/orgs/saama -> 404, as do SaamaTechnologies and saama-tech); the only Saama-owned
+  org found is `saamaresearch` ("Saama AI Research", 11 public repos, created 2017), and every one
+  of those repos is a FORK of a third-party project (arq, sympy, jinjasql, redis-lru, firefly,
+  S2V, NCS_Examples) rather than a Saama-authored library. No npm package lists a saama
+  maintainer. Because there is no public API, there is nothing for an SDK to wrap - the absent SDK
+  is a consequence of the absent contract, not a separate gap. No SDKs pointer is emitted.
+packages:
+- name: '@itispal/uikit'
+  registry: npm
+  url: https://www.npmjs.com/package/@itispal/uikit
+  official: false
+  version: 0.0.20
+  published: '2023-02-27'
+  language: JavaScript
+  kind: ui-component-library
+  note: >-
+    Describes itself as "React UI Framework by Saama" and its homepage points at
+    github.com/saamaresearch/uikit, but it is published from a PERSONAL npm account
+    (maintainer `itispal`, impalpandian@gmail.com), not a Saama-owned scope, and the GitHub repo it
+    names now returns 404. It is an internal UI kit an employee published, not a supported client
+    library for a Saama API, and it has not shipped a release in over three years. Recorded as a
+    lead with official:false - it must NOT be counted toward sdk_count.
+github_orgs:
+- login: saamaresearch
+  name: Saama AI Research
+  url: https://github.com/saamaresearch
+  public_repos: 11
+  first_party_libraries: 0
+  note: >-
+    All 11 public repos are forks of external open-source projects (arq, sympy, jinjasql, redis-lru,
+    firefly, S2V) or one-off research samples (NCS_Examples, pyasyncsp, ft_strategies,
+    pyhack2021-problem, a PyTorch categorical-embedding notebook). No Saama-authored library. Most
+    recent push 2025-07-24, and that was to a fork of `arq`.
+- login: comprehend
+  name: Saama Technologies, Inc.
+  url: https://github.com/comprehend
+  public_repos: 2
+  first_party_libraries: 0
+  note: >-
+    Re-checked 2026-08-26 and confirmed Saama-owned - the org's own GitHub profile reads name
+    "Saama Technologies, Inc." with blog https://saama.com. This is the residue of Comprehend
+    Systems, the clinical-analytics company Saama acquired; comprehend.com no longer resolves (DNS
+    NXDOMAIN) and the org holds only two forks (jboss-logmanager, TeamCity.Virtual). No Saama or
+    Comprehend library, and no surviving API from the acquired product.
+- login: SaamaInc
+  name: Saama Technologies Inc
+  url: https://github.com/SaamaInc
+  public_repos: 0
+  first_party_libraries: 0
+  note: Claimed org (blog www.saama.com), created 2018, never used - zero public repos.
+- login: Saama-Technologies
+  url: https://github.com/Saama-Technologies
+  public_repos: 0
+  first_party_libraries: 0
+  note: Empty org, created 2021.
+- login: SaamaAnalytics
+  name: Saama Analytics
+  url: https://github.com/SaamaAnalytics
+  public_repos: 0
+  first_party_libraries: 0
+  note: Empty org, created 2021; profile points at saamaanalytics.com.
+- login: Saama-CodeBase
+  url: https://github.com/Saama-CodeBase
+  public_repos: 0
+  first_party_libraries: 0
+  note: Empty org, created 2025-03.
+- login: saama-ites
+  name: Saama Technologies - ITES
+  url: https://github.com/saama-ites
+  public_repos: 0
+  first_party_libraries: 0
+  note: Empty org, created 2022.
+registries_searched:
+- registry: npm
+  query: text=saama, maintainer:saama
+  first_party_hits: 0
+- registry: PyPI
+  query: saama, saama-sdk
+  first_party_hits: 0
+- registry: GitHub
+  query: >-
+    orgs/saama, orgs/SaamaTechnologies, orgs/saama-tech, search/users?q=saama+type:org (20 orgs
+    returned, 7 of them Saama-owned or Saama-derived), and a full repo listing of every one
+  first_party_hits: 0
+x-evidence:
+- url: https://api.github.com/orgs/saama
+  status: 404
+- url: https://api.github.com/orgs/saamaresearch
+  status: 200
+- url: https://registry.npmjs.org/@itispal/uikit
+  status: 200
+- url: https://api.github.com/repos/saamaresearch/uikit
+  status: 404
+- url: https://pypi.org/pypi/saama/json
+  status: 404
+- url: https://api.github.com/orgs/comprehend
+  status: 200
+  note: name "Saama Technologies, Inc.", blog https://saama.com - the acquired Comprehend Systems org
+- url: https://api.github.com/orgs/SaamaInc
+  status: 200
+  note: 0 public repos
+- url: https://comprehend.com/
+  status: <no response>
+  note: DNS NXDOMAIN - the acquired product's domain is gone

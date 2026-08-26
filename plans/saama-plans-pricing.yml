@@ -1,0 +1,28 @@
+generated: '2026-08-26'
+method: searched
+source: https://www.saama.com/ (site-wide search for a pricing or plans page)
+plan_count: 0
+model: enterprise-contact-only
+note: >-
+  Saama publishes no pricing, no plans, and no tiers. https://www.saama.com/pricing/ returns HTTP
+  200 but is a WordPress soft-404 - its canonical URL is https://www.saama.com/ and it renders the
+  homepage. The Yoast page sitemap (103 URLs) contains no pricing, plans, packaging or
+  subscription page. The only commercial call to action anywhere on the site is
+  https://www.saama.com/demo/ ("Schedule A Demo"), a lead form. There is no self-serve sign-up, no
+  free tier, no trial, and no published unit of consumption. This is an enterprise sales motion:
+  price is set per sponsor, per study or per program in a negotiated master agreement.
+plans: []
+signup:
+  self_serve: false
+  url: https://www.saama.com/demo/
+  status: 200
+  form: Schedule a Demo lead capture
+x-evidence:
+- url: https://www.saama.com/pricing/
+  status: 200
+  note: soft-404, canonical https://www.saama.com/
+- url: https://www.saama.com/demo/
+  status: 200
+- url: https://www.saama.com/page-sitemap.xml
+  status: 200
+  note: 103 pages, none about pricing or plans

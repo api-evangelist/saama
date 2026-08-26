@@ -1,0 +1,49 @@
+generated: '2026-08-26'
+method: probed
+source: >-
+  DNS probes of mcp.saama.com / agents.saama.com, npm and PyPI registry search, GitHub org search,
+  and a site-wide search of https://www.saama.com/ for a Model Context Protocol server
+status: none
+pointer_emitted: false
+note: >-
+  Saama ships no MCP server, remote or local. This is recorded as a probe result rather than a
+  candidate derivation because there is no OpenAPI in this repo to derive a candidate tool list
+  from - Saama publishes no machine-readable contract at all, so there are no operations to bind
+  tools to. No `MCPServer` pointer is wired into apis.yml, and no endpoint URL is guessed: an
+  invented MCP path that happened to answer 200 would read as a verified agent surface, which is
+  the single worst artifact this pipeline can produce.
+deployment:
+  mode: none
+  endpoint: null
+  install: null
+  package: null
+  auth: unknown
+  verified: probed
+tools: []
+context:
+  note: >-
+    Saama announced a family of modular Clinical AI Agents in 2025 and states they are "connected
+    via APIs". Those agents are Saama's own agents operating inside Saama's platform on behalf of a
+    tenant - they are not an agent surface that an external MCP client can reach. Nothing in the
+    public material describes a tool interface, a manifest, or an endpoint an outside agent could
+    call.
+  reference: https://www.saama.com/platform/
+x-evidence:
+- url: https://mcp.saama.com/
+  status: <no response>
+  note: DNS NXDOMAIN
+- url: https://agents.saama.com/
+  status: <no response>
+  note: DNS NXDOMAIN
+- url: https://api.saama.com/
+  status: <no response>
+  note: DNS NXDOMAIN - no host to POST tools/list to
+- url: https://registry.npmjs.org/-/v1/search?text=saama
+  status: 200
+  note: no Saama-published MCP package
+- url: https://api.github.com/orgs/saama
+  status: 404
+  note: >-
+    no Saama-owned org publishes an MCP server; saamaresearch (11 repos) is all forks, and
+    SaamaInc, Saama-Technologies, SaamaAnalytics, Saama-CodeBase and saama-ites are all 0-repo
+    empty orgs

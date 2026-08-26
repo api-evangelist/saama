@@ -1,0 +1,77 @@
+generated: '2026-08-26'
+method: searched
+source: >-
+  https://www.saama.com/about/company/security-compliance/ and
+  https://www.saama.com/smart-medical-coding/ (site-wide search for an authentication,
+  API key, token or OAuth reference page)
+documented: false
+documented_flows: 0
+pointer_emitted: false
+note: >-
+  Saama states that authentication exists but publishes no authentication documentation. There is
+  no auth guide, no token endpoint, no key-issuance flow, no scope list and no example request
+  anywhere on the public site: https://www.saama.com/api/, /developers/ and /docs/ all HTTP 301
+  straight to the homepage, and the page sitemap (103 URLs) contains no reference material. What is
+  recorded below is the sum of every authentication statement the company makes in public, and each
+  one is a PROSE CLAIM on a marketing or compliance page rather than a documented flow. No
+  `Authentication` pointer is wired into apis.yml, for the same reason the WellKnown pointer was
+  withheld: that pointer asserts the provider documents authentication as its own topic, and Saama
+  does not - crediting it here would score a page that does not exist.
+platform_authentication:
+  scope: >-
+    Applies to human sign-in to the Saama Platform UI, not to a programmatic API. Stated on the
+    Security & Compliance page.
+  mechanisms:
+  - name: SAML
+    evidence: >-
+      "Saama's Platform features SAML, OAuth, and LDAP authentication mechanisms and provide
+      seamless single sign-on"
+  - name: OAuth
+    evidence: same sentence; no version, grant type, authorization server or scope set is named
+  - name: LDAP
+    evidence: same sentence
+  sso: true
+  federated_identity: true
+  mfa:
+    required_for: critical systems
+    evidence: page states multi-factor authentication is required for critical systems
+  authorization:
+    model: role-based access control
+    evidence: >-
+      Data Hub product page describes "custom queries across multiple layers securely using SQL
+      syntax while maintaining robust privacy and role-based controls"
+api_authentication:
+  documented: false
+  claimed_scheme: token
+  evidence: >-
+    Smart Medical Coding product page, "EDC & API integration" capability card: "Inbound/outbound
+    APIs, EDC connectors, and token-based authentication."
+  url: https://www.saama.com/smart-medical-coding/
+  gaps:
+  - no token format, lifetime or refresh behaviour stated
+  - no token or authorization endpoint published
+  - no key issuance, rotation or revocation process published
+  - no scopes or permissions reference
+  - no example request or header name
+  note: >-
+    This single sentence is the only public evidence that a customer-facing API exists at all. It
+    is consistent with the 2025 Clinical AI Agents announcement ("connected via APIs") and the Data
+    Hub's 40-plus pre-built connectors, but none of it is reachable or readable without a tenant.
+security_schemes: []
+x-evidence:
+- url: https://www.saama.com/about/company/security-compliance/
+  status: 200
+- url: https://www.saama.com/smart-medical-coding/
+  status: 200
+- url: https://www.saama.com/api/
+  status: 301
+  note: redirects to https://www.saama.com/
+- url: https://www.saama.com/developers/
+  status: 301
+  note: redirects to https://www.saama.com/
+- url: https://www.saama.com/docs/
+  status: 301
+  note: redirects to https://www.saama.com/
+- url: https://www.saama.com/.well-known/oauth-authorization-server
+  status: 200
+  note: WordPress HTML homepage shell, not authorization-server metadata - a miss

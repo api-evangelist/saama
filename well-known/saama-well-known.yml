@@ -1,0 +1,67 @@
+generated: '2026-08-26'
+method: probed
+source: live GET probes of /.well-known/* on every Saama host known to this profile
+note: >-
+  Every path was probed on 2026-08-26. Saama's site is WordPress behind nginx: two paths return
+  a real 404, and every other /.well-known/* path returns HTTP 200 with the site's own HTML
+  homepage shell (content-type text/html, canonical https://www.saama.com/). Those 200s are the
+  WordPress catch-all, NOT served documents - they are recorded as misses and NO WellKnown or
+  SecurityTxt pointer is emitted. No other Saama host exists to probe: developer.saama.com,
+  docs.saama.com, api.saama.com and apidocs.saama.com all fail DNS resolution (NXDOMAIN), and
+  support.saama.com 302s into a Freshworks OAuth login before any path can be read. Re-probed
+  2026-08-26: unchanged. Also confirmed this round that /api/, /developers/ and /docs/ HTTP 301 to
+  the homepage, so there is no docs host whose /.well-known/* could be probed either.
+hosts:
+- host: www.saama.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+    file: null
+  - path: /.well-known/openid-configuration
+    status: 200
+    file: null
+    note: HTML homepage shell, not an OpenID Connect discovery document - counted as a miss
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: null
+    note: HTML homepage shell, not an authorization-server metadata document - counted as a miss
+  - path: /.well-known/api-catalog
+    status: 200
+    file: null
+    note: HTML homepage shell, not an RFC 9727 API catalog - counted as a miss
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    file: null
+    note: HTML homepage shell, not a plugin manifest - counted as a miss
+  - path: /.well-known/agent-card.json
+    status: 200
+    file: null
+    note: HTML homepage shell, not an A2A AgentCard - counted as a miss
+  - path: /.well-known/agent.json
+    status: 200
+    file: null
+    note: HTML homepage shell, not a legacy A2A AgentCard - counted as a miss
+  - path: /llms.txt
+    status: 404
+    file: null
+- host: developer.saama.com
+  documents:
+  - path: /.well-known/security.txt
+    status: <no response>
+    file: null
+    note: DNS NXDOMAIN - host does not exist
+- host: api.saama.com
+  documents:
+  - path: /.well-known/security.txt
+    status: <no response>
+    file: null
+    note: DNS NXDOMAIN - host does not exist
+- host: support.saama.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 302
+    file: null
+    note: >-
+      Re-probed 2026-08-26. The host exists (CNAME fdus-lb53-d41.freshdesk.com) but every path
+      302s to https://support.saama.com/support/login before any document can be read - counted as
+      a miss, and as the wall recorded in x-coverage.

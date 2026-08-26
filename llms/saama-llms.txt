@@ -1,0 +1,106 @@
+# Saama
+
+> Saama (Saama Technologies, Inc.) builds AI-powered clinical analytics software for
+> biopharmaceutical sponsors and CROs. Its platform ingests, curates and animates clinical trial
+> data across a product family that includes the Data Hub, Smart Data Quality, Operational and
+> Patient Insights, Source to Submission, the BRAIN biometrics suite, and a set of modular
+> Clinical AI Agents.
+
+## Agent-facing status (measured 2026-08-26)
+
+Saama publishes **no public API**. There is no developer portal, no API reference, no
+machine-readable specification of any kind, and no agent surface. An agent cannot call Saama.
+
+- No OpenAPI, Swagger, GraphQL SDL, AsyncAPI, WSDL or Protobuf contract was found on any host.
+- No MCP server, no A2A agent card, no llms.txt (https://www.saama.com/llms.txt returns 404).
+- `developer.saama.com`, `docs.saama.com`, `api.saama.com` and `apidocs.saama.com` do not resolve.
+- Every `/.well-known/*` path on www.saama.com returns the WordPress HTML homepage shell, not a
+  document. Do not treat those 200s as served manifests.
+- `https://www.saama.com/api/`, `/developers/` and `/docs/` all HTTP **301 to the homepage**. So do
+  `/sla/`, `/changelog/`, `/release-notes/` and `/status/`. There is no reference material behind
+  any conventional path, and the 103-URL page sitemap names none.
+- No MCP server, remote or local: `mcp.saama.com` and `agents.saama.com` do not resolve, and no
+  Saama-published MCP package exists on npm or PyPI.
+- No first-party SDK on any registry. Seven Saama-owned or Saama-derived GitHub orgs were checked
+  (`saamaresearch`, `comprehend`, `SaamaInc`, `Saama-Technologies`, `SaamaAnalytics`,
+  `Saama-CodeBase`, `saama-ites`); five hold zero public repos and the other two hold only forks.
+  `comprehend` is the residue of Comprehend Systems, the clinical-analytics company Saama acquired
+  - comprehend.com no longer resolves.
+- The only technical channel is https://support.saama.com/, which 302s to
+  `https://support.saama.com/support/login` (Freshdesk). Documentation, if it exists, is
+  customer-only.
+- A customer-facing API almost certainly exists and Saama says so in exactly one sentence: the
+  Smart Medical Coding page advertises "Inbound/outbound APIs, EDC connectors, and token-based
+  authentication". Saama's 2025 announcement says its Clinical AI Agents are "connected via APIs",
+  and the Data Hub offers "40+ pre-built connectors". None of it is publicly reachable, and none of
+  it is documented - there is no token endpoint, no header name, no scope list, no example request.
+
+## Products
+
+- [Platform overview](https://www.saama.com/platform/)
+- [Products index](https://www.saama.com/platform/products/)
+- [Data Hub](https://www.saama.com/platform/products/data-hub/): clinical data ingestion and
+  curation; 40+ pre-built connectors, file-based ingestion, and a SQL console for direct queries.
+- [Smart Data Quality (SDQ)](https://www.saama.com/platform/products/smart-data-quality/):
+  integrated rule builder, blinded/unblinded integration, Integrated Data Review Assist (IDRA).
+- [Operational Insights](https://www.saama.com/platform/products/operational-insights/)
+- [Patient Insights](https://www.saama.com/platform/products/patient-insights/)
+- [Source to Submission (S2S)](https://www.saama.com/platform/products/source-to-submission-s2s/)
+- [BRAIN](https://www.saama.com/platform/products/biometrics-research-and-analysis-information-network-brain/):
+  biometrics research network, with [BRAIN SDTM](https://www.saama.com/platform/products/brain-sdtm/)
+  (CDISC SDTM artifact generation, latest Define-XML),
+  [BRAIN SCE](https://www.saama.com/platform/products/brain-sce/),
+  [BRAIN Visualization](https://www.saama.com/platform/products/brain-visualization/) and the
+  [BRAIN Consortium](https://www.saama.com/platform/products/brain-consortium/).
+- [AI-Powered Document Generator](https://www.saama.com/platform/products/ai-powered-document-generator/)
+- [Agentic AI in clinical research](https://www.saama.com/agentic-ai-in-clinical-research/)
+
+## Standards and compliance
+
+- [Security & Compliance](https://www.saama.com/about/company/security-compliance/): the
+  information security program is stated as **aligned to** ISO/IEC 27001:2013, 21 CFR Part 11 and
+  ICH E6, with FIPS 140-2 approved AES-256 encryption. These are alignment claims, not third-party
+  certifications - no attestation or audit report is offered. SOC 2, HITRUST, FedRAMP, PCI DSS,
+  HIPAA and GDPR are not named on that page.
+- Domain standard: CDISC (SDTM, Define-XML), claimed on the BRAIN SDTM product page.
+- No coordinated vulnerability disclosure program, no security.txt, no bug bounty.
+
+## Commercial
+
+- No published pricing, plans or tiers. https://www.saama.com/pricing/ is a soft-404.
+- [Schedule a demo](https://www.saama.com/demo/) is the only entry point; enterprise sales motion.
+- [Terms of Use](https://www.saama.com/terms-of-use/)
+- [Privacy Policy](https://www.saama.com/privacy-policy/)
+
+## Company
+
+- [Website](https://www.saama.com/) - [Blog](https://www.saama.com/blog/) -
+  [RSS](https://www.saama.com/feed/) - [News](https://www.saama.com/news/)
+- [Leadership](https://www.saama.com/about/company/leadership/) -
+  [Offices](https://www.saama.com/about/company/offices/) -
+  [Careers](https://www.saama.com/about/company/careers/)
+- [LinkedIn](https://www.linkedin.com/company/saama-technologies)
+- Astraa is named on the site as "a Saama company" serving banking, capital markets, consumer
+  goods, insurance and the public sector.
+
+## Lifecycle and operations
+
+- No versioning policy, no deprecation policy, no RFC 8594 Sunset/Deprecation headers.
+- No SLA and no status page - `status.saama.com` does not resolve.
+- No dated changelog. Product change is announced editorially in the newsroom and blog, without
+  version numbers or a breaking-change structure.
+- No published rate limits, and no live endpoint on which to observe `RateLimit-*` headers.
+
+## If you are an agent
+
+You cannot call Saama. There is no endpoint, no contract, no key issuance and no sandbox on the
+public internet. The correct action is to stop and hand off to a human, who can reach Saama through
+https://www.saama.com/demo/ (enterprise sales) or, as an existing tenant, through
+https://support.saama.com/. Do not synthesize a Saama base URL or auth scheme - none is published.
+
+---
+generated: 2026-08-26
+method: generated
+source: apis.yml + live probes of www.saama.com (this file is written by API Evangelist, not by
+  Saama; https://www.saama.com/llms.txt returned 404 on 2026-08-26, re-checked and still
+  404 on 2026-08-26)

@@ -1,0 +1,80 @@
+generated: '2026-08-26'
+method: searched
+source: https://www.saama.com/about/company/security-compliance/
+name: Saama Security & Compliance
+url: https://www.saama.com/about/company/security-compliance/
+note: >-
+  Saama does not run a dedicated trust-center host (trust.saama.com and status.saama.com both
+  fail DNS resolution). The "Trust" item in the site navigation and https://www.saama.com/security/
+  and https://www.saama.com/about/company/trust/ all resolve to this single Security & Compliance
+  page, which is the company's published trust surface. It names the frameworks its information
+  security management program is aligned to; it does NOT claim third-party certification or
+  attestation for any of them, and no audit report, SOC 2 attestation or certificate download is
+  offered - the only artifact linked is a marketing white paper. Recorded exactly as stated.
+aliases:
+- https://www.saama.com/security/
+- https://www.saama.com/about/company/trust/
+certifications:
+- name: ISO/IEC 27001:2013
+  status: aligned
+  evidence: >-
+    "We maintain an information security management program with defined roles, responsibilities,
+    policies, and procedures. Our program is aligned to: ISO/IEC 27001:2013; 21 CFR Part 11; and
+    ICH E6."
+- name: 21 CFR Part 11
+  status: aligned
+  evidence: same "Our program is aligned to" statement under Safeguards Practices/Procedures - Organizational
+- name: ICH E6 (Good Clinical Practice)
+  status: aligned
+  evidence: same "Our program is aligned to" statement under Safeguards Practices/Procedures - Organizational
+- name: FIPS 140-2
+  status: aligned
+  evidence: >-
+    "We use industry standard AES 256-bit encryption and cryptographic algorithms, approved in the
+    Federal Information Processing Standard ("FIPS" 140-2) security standards publication."
+not_claimed:
+- SOC 2
+- HITRUST
+- FedRAMP
+- PCI DSS
+- HIPAA (named nowhere on the page despite the clinical-data domain)
+- GDPR (named nowhere on the page)
+practices_published:
+- external Chief Information Security Officer appointed
+- separation of admin roles from development and service-delivery teams
+- AWS-hosted SaaS platform and Clinical AI/Analytics-as-a-Service (CaaS)
+- TLS 1.2 and TLS 1.3 in transit; AES-256 at rest
+- SAML, OAuth and LDAP authentication with SSO and Federated Identity Management
+- MFA required for critical systems
+- EDR, CASB, SIEM and WAF deployed
+- DAST, SAST, container vulnerability scanning and black-box manual testing in the SDLC
+- Threat and Vulnerability Management (TVM) program
+- multi-data-center deployment with documented and tested recovery procedures
+ai_governance:
+  note: >-
+    The page states a commitment to evolving AI regulation rather than conformance to it.
+  frameworks_referenced:
+  - US Executive Order on Safe, Secure, and Trustworthy Development and Use of Artificial Intelligence (2023)
+  - Canada Artificial Intelligence and Data Act (AIDA)
+  - EU AI Act
+vulnerability_disclosure:
+  published: false
+  note: >-
+    No coordinated vulnerability disclosure program is published. The page describes INTERNAL
+    Threat and Vulnerability Management (DAST/SAST/scanning) only. There is no security.txt
+    (/.well-known/security.txt returns 404), no security@ contact, no /responsible-disclosure page
+    (that path soft-404s to the homepage), and no HackerOne/Bugcrowd/Intigriti program. No
+    VulnerabilityDisclosure or Security pointer is emitted.
+x-evidence:
+- url: https://www.saama.com/about/company/security-compliance/
+  status: 200
+- url: https://www.saama.com/security/
+  status: 200
+- url: https://www.saama.com/.well-known/security.txt
+  status: 404
+- url: https://www.saama.com/responsible-disclosure/
+  status: 200
+  note: soft-404 - canonical is https://www.saama.com/, not a real page
+- url: https://trust.saama.com/
+  status: <no response>
+  note: DNS NXDOMAIN

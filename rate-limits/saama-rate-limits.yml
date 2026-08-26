@@ -1,0 +1,23 @@
+generated: '2026-08-26'
+method: searched
+source: https://www.saama.com/ (site-wide search for API documentation and published limits)
+limit_count: 0
+note: >-
+  No rate limits are published, because no public API is documented. Saama serves no developer
+  portal or API reference on any host: developer.saama.com, docs.saama.com, api.saama.com and
+  apidocs.saama.com all fail DNS resolution, and no reference or quota page appears in the Yoast
+  page sitemap. With no callable public endpoint there was also nothing to probe for live
+  RateLimit-* / X-RateLimit-* / Retry-After response headers, so no header behaviour is recorded.
+  An honest zero: this is an absence of publication, not an observation that the API is unlimited.
+limits: []
+headers: []
+x-evidence:
+- url: https://developer.saama.com/
+  status: <no response>
+  note: DNS NXDOMAIN
+- url: https://api.saama.com/
+  status: <no response>
+  note: DNS NXDOMAIN
+- url: https://www.saama.com/page-sitemap.xml
+  status: 200
+  note: 103 pages, no API reference or limits page

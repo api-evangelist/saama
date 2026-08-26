@@ -1,17 +1,34 @@
 aid: saama
 name: Saama
-description: 'Saama is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Saama (Saama Technologies, Inc.) is a Campbell, California life-sciences technology company
+  that builds AI-powered clinical analytics software for biopharmaceutical sponsors and CROs.
+  Its platform ingests, curates and animates clinical trial data through products including the
+  Data Hub, Smart Data Quality (SDQ), Operational Insights, Patient Insights, Source to
+  Submission (S2S) and the BRAIN family (BRAIN SDTM, BRAIN SCE, BRAIN Visualization, BRAIN
+  Consortium), alongside a set of modular Clinical AI Agents announced in 2025. Saama states its
+  platform offers 40-plus pre-built connectors and that its agents are "connected via APIs", but
+  as of this profile the company publishes no public developer portal, API reference or
+  machine-readable specification - technical documentation and the support portal both sit behind
+  a customer login.
+image: https://www.saama.com/wp-content/uploads/hero.png
 url: https://raw.githubusercontent.com/api-evangelist/saama/refs/heads/main/apis.yml
 x-type: company
 x-source: harvest:secondary-market
-x-tier: stub
-x-tier-reason: harvest
 specificationVersion: '0.20'
 created: '2026-08-26'
 modified: '2026-08-26'
 tags:
-- Company
+- Life Sciences
+- Clinical Trials
+- Clinical Data Management
+- Analytics
+- Artificial Intelligence
+- Machine Learning
+- Pharmaceuticals
+- Healthcare
+- Data Platform
+- CDISC
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +36,72 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Compliance
+  url: https://www.saama.com/about/company/security-compliance/
+- type: GitHubOrganization
+  url: https://github.com/saamaresearch
+- type: RateLimits
+  url: rate-limits/saama-rate-limits.yml
+- type: Plans
+  url: plans/saama-plans-pricing.yml
+- type: LLMsTxt
+  url: llms/saama-llms.txt
+- type: Packages
+  url: packages/saama-packages.yml
+- type: Conformance
+  url: conformance/saama-conformance.yml
+- type: TrustCenter
+  url: security/saama-trust-center.yml
+- type: DomainSecurity
+  url: security/saama-domain-security.yml
 - type: Website
+  url: https://www.saama.com/
+- type: Blog
+  url: https://www.saama.com/blog/
+- type: BlogRSS
+  url: https://www.saama.com/feed/
+- type: Newsroom
+  url: https://www.saama.com/news/
+- type: Support
+  url: https://support.saama.com/
+- type: TermsOfService
+  url: https://www.saama.com/terms-of-use/
+- type: PrivacyPolicy
+  url: https://www.saama.com/privacy-policy/
+- type: LinkedIn
+  url: https://www.linkedin.com/company/saama-technologies
+- type: SecondaryMarket
   url: https://forgeglobal.com/saama_stock/
+x-enrichment:
+  date: '2026-08-26'
+  status: minimal
+  artifacts_added: 11
+  pass: local-v1
+x-coverage:
+  state: gated
+  reason: customer-only-docs
+  detail: >-
+    Saama serves no developer host at all - developer.saama.com, docs.saama.com, api.saama.com,
+    apidocs.saama.com, mcp.saama.com and status.saama.com are every one of them DNS NXDOMAIN - and
+    on the marketing site /api/, /developers/ and /docs/ all HTTP 301 straight back to the
+    homepage, so the API its own Smart Medical Coding page advertises ("inbound/outbound APIs, EDC
+    connectors, and token-based authentication") is documented only behind support.saama.com, which
+    302s to a Freshdesk customer login.
+  evidence:
+  - url: https://www.saama.com/api/
+    status: 301
+  - url: https://www.saama.com/developers/
+    status: 301
+  - url: https://www.saama.com/docs/
+    status: 301
+  - url: https://developer.saama.com/
+    status: <no response>
+  - url: https://api.saama.com/
+    status: <no response>
+  - url: https://support.saama.com/
+    status: 302
+  - url: https://www.saama.com/llms.txt
+    status: 404
+  - url: https://www.saama.com/.well-known/security.txt
+    status: 404
+  checked: '2026-08-26'

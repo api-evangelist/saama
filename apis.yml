@@ -50,7 +50,7 @@ tags:
 - Clinical Data Management
 - Analytics
 - Artificial Intelligence
-- Machine-Learning
+- Machine Learning
 - Pharmaceuticals
 - Healthcare
 - Data Platform
@@ -66,6 +66,7 @@ tags_raw:
 - Healthcare
 - Data Platform
 - CDISC
+- Machine-Learning
 apis: []
 maintainers:
 - FN: Kin Lane
